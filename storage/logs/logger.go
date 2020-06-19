@@ -20,9 +20,9 @@ var (
 )
 
 const (
-	logDir = "./storage/logs"
-	rotationTime = time.Hour *24
-	maxAge = time.Hour*24*30
+	logDir       = "./storage/logs"
+	rotationTime = time.Hour * 24
+	maxAge       = time.Hour * 24 * 30
 )
 
 func init() {

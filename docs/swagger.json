@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "This is a visual data query service for meteorological data.",
-        "title": "Swagger mhserver API",
+        "title": "Swagger basic architecture API",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
             "name": "API Support",
@@ -10,12 +10,12 @@
             "email": "support@swagger.io"
         },
         "license": {
-            "name": "Apache 2.0\\",
+            "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         },
         "version": "1.0"
     },
-    "host": "127.0.0.1:8092",
+    "host": "127.0.0.1:8090",
     "basePath": "/api/v1",
     "paths": {}
 }

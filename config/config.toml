@@ -7,5 +7,5 @@ mysql_password = "123456"
 mysql_utf8 = true
 
 [server]
-mode = "debug"
+mode = "release"
 port = 8090

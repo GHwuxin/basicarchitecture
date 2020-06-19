@@ -1,5 +1,5 @@
 basePath: /api/v1
-host: 127.0.0.1:8092
+host: 127.0.0.1:8090
 info:
   contact:
     email: support@swagger.io
@@ -7,10 +7,10 @@ info:
     url: http://www.swagger.io/support
   description: This is a visual data query service for meteorological data.
   license:
-    name: Apache 2.0\
+    name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: http://swagger.io/terms/
-  title: Swagger mhserver API
+  title: Swagger basic architecture API
   version: "1.0"
 paths: {}
 swagger: "2.0"

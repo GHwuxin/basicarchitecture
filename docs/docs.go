@@ -25,7 +25,7 @@ var doc = `{
             "email": "support@swagger.io"
         },
         "license": {
-            "name": "Apache 2.0\\",
+            "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         },
         "version": "{{.Version}}"
@@ -47,10 +47,10 @@ type swaggerInfo struct {
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = swaggerInfo{
 	Version:     "1.0",
-	Host:        "127.0.0.1:8092",
+	Host:        "127.0.0.1:8090",
 	BasePath:    "/api/v1",
 	Schemes:     []string{},
-	Title:       "Swagger mhserver API",
+	Title:       "Swagger basic architecture API",
 	Description: "This is a visual data query service for meteorological data.",
 }
 

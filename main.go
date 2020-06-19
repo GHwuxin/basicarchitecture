@@ -5,15 +5,11 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-
 	"yangjian.com/basicarchitecture/api/controllers"
-	"yangjian.com/basicarchitecture/api/router"
-	"yangjian.com/basicarchitecture/config"
-	orm "yangjian.com/basicarchitecture/dao"
-	"yangjian.com/basicarchitecture/storage/logs"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+	"yangjian.com/basicarchitecture/api/router"
 )
 
 // @title Swagger basic architecture API
@@ -31,24 +27,11 @@ import (
 // @host 127.0.0.1:8090
 // @BasePath /api/v1
 func main() {
-	// check logger
-	if err := logs.Error(); err != nil {
-		fmt.Printf("init logger error:%s\n", err.Error())
-		return
-	}
-	// check config
-	if err := config.Error(); err != nil {
-		log.Errorf("config is error:%s", err.Error())
-		return
-	}
 	// init controller
-	controllers.InitController()
-	// check dao
-	if err := orm.Error(); err != nil {
-		log.Errorf("database is error:%s", err.Error())
+	if err := controllers.InitController(); err != nil {
+		log.Errorf("init is error:%s", err.Error())
 		return
 	}
-
 	// get port
 	port := viper.GetInt("server.port")
 	router.Run(fmt.Sprintf(":%d", port), router.Router())
