@@ -14,16 +14,24 @@ import (
 )
 
 // errLogger is init logger error
-var errLogger error
-var onceLogger sync.Once
+var (
+	errLogger  error
+	onceLogger sync.Once
+)
+
+const (
+	logDir = "./storage/logs"
+	rotationTime = time.Hour *24
+	maxAge = time.Hour*24*30
+)
 
 func init() {
 	onceLogger.Do(func() {
-		logDir := "./storage/logs"
 		if utils.Exists(logDir) {
 			err := os.MkdirAll(logDir, os.ModePerm)
 			if err != nil {
 				errLogger = err
+				return
 			}
 		}
 		logPath := filepath.Join(logDir, "log")
@@ -33,22 +41,23 @@ func init() {
 		writer, err := rotatelogs.New(
 			logPath+".%Y%m%d%H%M%S",
 			rotatelogs.WithLinkName(logPath),
-			rotatelogs.WithRotationTime(time.Hour*24),
-			rotatelogs.WithMaxAge(time.Hour*24*30),
+			rotatelogs.WithRotationTime(rotationTime),
+			rotatelogs.WithMaxAge(maxAge),
 		)
-
-		// lfsHook := lfshook.NewHook(lfshook.WriterMap{
-		// 	log.DebugLevel: writer,
-		// 	log.InfoLevel:  writer,
-		// 	log.WarnLevel:  writer,
-		// 	log.ErrorLevel: writer,
-		// 	log.FatalLevel: writer,
-		// 	log.PanicLevel: writer,
-		// }, &log.TextFormatter{TimestampFormat: "2006-01-02 15:04:05"})
-		// instance.AddHook(lfsHook)
+		// the log has level
+		//lfsHook := lfshook.NewHook(lfshook.WriterMap{
+		//	log.DebugLevel: writer,
+		//	log.InfoLevel:  writer,
+		//	log.WarnLevel:  writer,
+		//	log.ErrorLevel: writer,
+		//	log.FatalLevel: writer,
+		//	log.PanicLevel: writer,
+		//}, &log.TextFormatter{TimestampFormat: "2006-01-02 15:04:05"})
+		//log.AddHook(lfsHook)
 
 		if err != nil {
 			errLogger = err
+			return
 		}
 		log.SetOutput(io.MultiWriter(writer, os.Stdout))
 	})
