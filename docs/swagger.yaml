@@ -1,4 +1,17 @@
 basePath: /api/v1
+definitions:
+  middleware.ResponseWrapper:
+    properties:
+      code:
+        description: status code
+        type: integer
+      data:
+        description: return data
+        type: object
+      msg:
+        description: return message
+        type: string
+    type: object
 host: 127.0.0.1:8090
 info:
   contact:
@@ -12,5 +25,187 @@ info:
   termsOfService: http://swagger.io/terms/
   title: Swagger basic architecture API
   version: "1.0"
-paths: {}
+paths:
+  /station/dic:
+    get:
+      consumes:
+      - application/json
+      description: 查询符合条件的站点信息
+      parameters:
+      - description: 当前页数
+        in: query
+        name: page
+        type: integer
+      - description: 每页条数
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+      summary: 站点列表查询
+      tags:
+      - 站点
+    post:
+      consumes:
+      - application/json
+      description: 增加站点字典表
+      parameters:
+      - description: 站点简称
+        in: query
+        name: short_name
+        required: true
+        type: string
+      - description: 站点中文名称
+        in: query
+        name: c_name
+        type: string
+      - description: 纬度
+        in: query
+        name: latitude
+        type: number
+      - description: 经度
+        in: query
+        name: longitude
+        type: number
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+      summary: 站点增加
+      tags:
+      - 站点
+    put:
+      consumes:
+      - application/json
+      description: 修改站点字典表
+      parameters:
+      - description: 站点简称
+        in: query
+        name: short_name
+        required: true
+        type: string
+      - description: 站点中文名称
+        in: query
+        name: c_name
+        type: string
+      - description: 纬度
+        in: query
+        name: latitude
+        type: number
+      - description: 经度
+        in: query
+        name: longitude
+        type: number
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+      summary: 站点更改
+      tags:
+      - 站点
+  /station/dic/{short_name}:
+    delete:
+      consumes:
+      - application/json
+      description: 删除站点字典表
+      parameters:
+      - description: 站点简称
+        in: path
+        name: short_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+      summary: 站点删除
+      tags:
+      - 站点
+    get:
+      consumes:
+      - application/json
+      description: 查询单个站点信息
+      parameters:
+      - description: 站点简称
+        in: path
+        name: short_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+      summary: 站点查询
+      tags:
+      - 站点
+  /station/search:
+    get:
+      consumes:
+      - application/json
+      description: 搜索地点的基本信息
+      parameters:
+      - description: 关键字，可以是站号、站名、以及站名拼音的简拼和全拼
+        in: query
+        name: key_word
+        required: true
+        type: string
+      - description: 当前页数
+        in: query
+        name: page
+        type: integer
+      - description: 每页条数
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/middleware.ResponseWrapper'
+      summary: 站点搜索
+      tags:
+      - 站点
 swagger: "2.0"

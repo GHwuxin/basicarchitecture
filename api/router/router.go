@@ -3,6 +3,7 @@ package router
 import (
 	"io"
 	"os"
+	"yangjian.com/basicarchitecture/api/controllers"
 
 	_ "yangjian.com/basicarchitecture/docs"
 
@@ -58,9 +59,15 @@ func registerRoutes(router *gin.Engine) {
 	// Static assets like js and css files
 	router.StaticFS("/download", gin.Dir("./resources", true))
 	//JSON-REST API Version 1
-	//v1 := router.Group("/api/v1")
-	//{
-	//}
+	v1 := router.Group("/api/v1")
+	{
+		v1.POST("/station/dic", (&controllers.SpaceStationController{}).AddDicSpaceStation)
+		v1.DELETE("/station/dic/:short_name", (&controllers.SpaceStationController{}).DestroyDicSpaceStation)
+		v1.PUT("/station/dic", (&controllers.SpaceStationController{}).UpdateDicSpaceStation)
+		v1.GET("/station/dic/:short_name", (&controllers.SpaceStationController{}).SelectDicSpaceStation)
+		v1.GET("/station/dic", (&controllers.SpaceStationController{}).ListDicSpaceStation)
+		v1.GET("/station/search", (&controllers.SpaceStationController{}).SearchDicSpaceStation)
+	}
 
 	// Default HTML page (client-side routing implemented via Vue.js)
 	// router.NoRoute(func(c *gin.Context) {

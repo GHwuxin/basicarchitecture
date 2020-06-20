@@ -17,5 +17,300 @@
     },
     "host": "127.0.0.1:8090",
     "basePath": "/api/v1",
-    "paths": {}
+    "paths": {
+        "/station/dic": {
+            "get": {
+                "description": "查询符合条件的站点信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "站点"
+                ],
+                "summary": "站点列表查询",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "当前页数",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页条数",
+                        "name": "per_page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "修改站点字典表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "站点"
+                ],
+                "summary": "站点更改",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "站点简称",
+                        "name": "short_name",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "站点中文名称",
+                        "name": "c_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "description": "纬度",
+                        "name": "latitude",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "description": "经度",
+                        "name": "longitude",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "增加站点字典表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "站点"
+                ],
+                "summary": "站点增加",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "站点简称",
+                        "name": "short_name",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "站点中文名称",
+                        "name": "c_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "description": "纬度",
+                        "name": "latitude",
+                        "in": "query"
+                    },
+                    {
+                        "type": "number",
+                        "description": "经度",
+                        "name": "longitude",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/station/dic/{short_name}": {
+            "get": {
+                "description": "查询单个站点信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "站点"
+                ],
+                "summary": "站点查询",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "站点简称",
+                        "name": "short_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "删除站点字典表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "站点"
+                ],
+                "summary": "站点删除",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "站点简称",
+                        "name": "short_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    }
+                }
+            }
+        },
+        "/station/search": {
+            "get": {
+                "description": "搜索地点的基本信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "站点"
+                ],
+                "summary": "站点搜索",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "关键字，可以是站号、站名、以及站名拼音的简拼和全拼",
+                        "name": "key_word",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "当前页数",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页条数",
+                        "name": "per_page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/middleware.ResponseWrapper"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "middleware.ResponseWrapper": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "status code",
+                    "type": "integer"
+                },
+                "data": {
+                    "description": "return data",
+                    "type": "object"
+                },
+                "msg": {
+                    "description": "return message",
+                    "type": "string"
+                }
+            }
+        }
+    }
 }
