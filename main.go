@@ -5,10 +5,11 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"yangjian.com/basicarchitecture/api/controllers"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+
+	"yangjian.com/basicarchitecture/api/controllers/common"
 	"yangjian.com/basicarchitecture/api/router"
 )
 
@@ -28,12 +29,13 @@ import (
 // @BasePath /api/v1
 func main() {
 	// init controller
-	if err := controllers.InitController(); err != nil {
+	if err := common.InitController(); err != nil {
 		log.Errorf("init is error:%s", err.Error())
 		return
 	}
 	// get port
 	port := viper.GetInt("server.port")
+	log.Infof("web server start complete, port is %d", port)
 	router.Run(fmt.Sprintf(":%d", port), router.Router())
 	quit := make(chan os.Signal)
 	signal.Notify(quit, syscall.SIGKILL, syscall.SIGQUIT, syscall.SIGINT, syscall.SIGTERM)

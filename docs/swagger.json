@@ -49,12 +49,14 @@
                     "200": {
                         "description": "OK",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     }
@@ -103,12 +105,14 @@
                     "200": {
                         "description": "OK",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     }
@@ -157,12 +161,14 @@
                     "201": {
                         "description": "Created",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     }
@@ -195,12 +201,14 @@
                     "200": {
                         "description": "OK",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     }
@@ -231,12 +239,14 @@
                     "204": {
                         "description": "No Content",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     }
@@ -281,12 +291,14 @@
                     "200": {
                         "description": "OK",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     },
                     "400": {
                         "description": "Bad Request",
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/middleware.ResponseWrapper"
                         }
                     }

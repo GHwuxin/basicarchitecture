@@ -1,4 +1,4 @@
-package controllers
+package spacestation
 
 import (
 	"github.com/gin-gonic/gin"

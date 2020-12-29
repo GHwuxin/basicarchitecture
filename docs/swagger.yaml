@@ -47,10 +47,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
         "400":
           description: Bad Request
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
       summary: 站点列表查询
       tags:
       - 站点
@@ -83,10 +85,12 @@ paths:
           description: Created
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
         "400":
           description: Bad Request
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
       summary: 站点增加
       tags:
       - 站点
@@ -119,10 +123,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
         "400":
           description: Bad Request
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
       summary: 站点更改
       tags:
       - 站点
@@ -144,10 +150,12 @@ paths:
           description: No Content
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
         "400":
           description: Bad Request
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
       summary: 站点删除
       tags:
       - 站点
@@ -168,10 +176,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
         "400":
           description: Bad Request
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
       summary: 站点查询
       tags:
       - 站点
@@ -201,10 +211,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
         "400":
           description: Bad Request
           schema:
             $ref: '#/definitions/middleware.ResponseWrapper'
+            type: object
       summary: 站点搜索
       tags:
       - 站点

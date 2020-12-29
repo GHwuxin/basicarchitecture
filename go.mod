@@ -23,10 +23,12 @@ require (
 	github.com/swaggo/swag v1.5.1
 	github.com/tebeka/strftime v0.1.4 // indirect
 	golang.org/x/sys v0.0.0-20200615200032-f1bc736245b1 // indirect
-	google.golang.org/protobuf v1.24.0 // indirect
+	google.golang.org/protobuf v1.25.0 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
 )
 
 replace golang.org/x/sys v0.0.0 => github.com/golang/sys v0.0.0-20200615200032-f1bc736245b1
+
+replace google.golang.org/protobuf v1.24.0 => github.com/golang/protobuf v1.4.2
 
 replace gopkg.in/yaml.v2 v2.3.0 => github.com/go-yaml/yaml v0.0.0-20200506230838-0b1645d91e85

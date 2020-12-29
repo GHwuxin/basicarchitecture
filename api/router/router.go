@@ -3,7 +3,7 @@ package router
 import (
 	"io"
 	"os"
-	"yangjian.com/basicarchitecture/api/controllers"
+	"yangjian.com/basicarchitecture/api/controllers/spacestation"
 
 	_ "yangjian.com/basicarchitecture/docs"
 
@@ -60,17 +60,20 @@ func registerRoutes(router *gin.Engine) {
 	router.StaticFS("/download", gin.Dir("./resources", true))
 	//JSON-REST API Version 1
 	v1 := router.Group("/api/v1")
-	{
-		v1.POST("/station/dic", (&controllers.SpaceStationController{}).AddDicSpaceStation)
-		v1.DELETE("/station/dic/:short_name", (&controllers.SpaceStationController{}).DestroyDicSpaceStation)
-		v1.PUT("/station/dic", (&controllers.SpaceStationController{}).UpdateDicSpaceStation)
-		v1.GET("/station/dic/:short_name", (&controllers.SpaceStationController{}).SelectDicSpaceStation)
-		v1.GET("/station/dic", (&controllers.SpaceStationController{}).ListDicSpaceStation)
-		v1.GET("/station/search", (&controllers.SpaceStationController{}).SearchDicSpaceStation)
-	}
+	registerStationRouter(v1)
 
 	// Default HTML page (client-side routing implemented via Vue.js)
 	// router.NoRoute(func(c *gin.Context) {
 	// 	c.HTML(http.StatusOK, "index.tmpl", conf.ClientConfig())
 	// })
+}
+
+func registerStationRouter(v1 *gin.RouterGroup) {
+
+	v1.POST("/station/dic", (&spacestation.SpaceStationController{}).AddDicSpaceStation)
+	v1.DELETE("/station/dic/:short_name", (&spacestation.SpaceStationController{}).DestroyDicSpaceStation)
+	v1.PUT("/station/dic", (&spacestation.SpaceStationController{}).UpdateDicSpaceStation)
+	v1.GET("/station/dic/:short_name", (&spacestation.SpaceStationController{}).SelectDicSpaceStation)
+	v1.GET("/station/dic", (&spacestation.SpaceStationController{}).ListDicSpaceStation)
+	v1.GET("/station/search", (&spacestation.SpaceStationController{}).SearchDicSpaceStation)
 }
